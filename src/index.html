@@ -217,13 +217,56 @@
                 Month 1: <strong>$0</strong><br>
                 After trial: <strong>$250/month</strong> — cancel anytime
             </div>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:flex;flex-direction:column;gap:10px">
-                <input type="text" name="name" placeholder="Your name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <input type="text" name="business" placeholder="Business name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <input type="tel" name="phone" placeholder="Phone number" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <input type="email" name="email" placeholder="Email address" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <button type="submit" class="offer-cta">Claim Your Free Setup</button>
+            <form id="leadForm" style="display:flex;flex-direction:column;gap:10px">
+                <input type="text" id="f-name" placeholder="Your name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <input type="text" id="f-biz" placeholder="Business name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <input type="tel" id="f-phone" placeholder="Phone number" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <input type="email" id="f-email" placeholder="Email address" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <button type="submit" id="f-btn" class="offer-cta">Claim Your Free Setup</button>
+                <div id="f-msg" style="display:none;text-align:center;padding:12px;border-radius:8px;font-weight:600;font-size:.9rem"></div>
             </form>
+            <script>
+            document.getElementById('leadForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btn = document.getElementById('f-btn');
+                const msg = document.getElementById('f-msg');
+                btn.textContent = 'Submitting...';
+                btn.disabled = true;
+
+                try {
+                    const res = await fetch('https://clientpulse-synaptixagent-codes-projects.vercel.app/api/public/intake', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: document.getElementById('f-name').value,
+                            business: document.getElementById('f-biz').value,
+                            phone: document.getElementById('f-phone').value,
+                            email: document.getElementById('f-email').value,
+                            service: 'AI Lead Follow-Up Setup',
+                        })
+                    });
+
+                    if (res.ok) {
+                        msg.style.display = 'block';
+                        msg.style.background = '#dcfce7';
+                        msg.style.color = '#166534';
+                        msg.textContent = "You're in! We'll reach out within 24 hours to get you set up.";
+                        document.getElementById('leadForm').reset();
+                    } else {
+                        const data = await res.json();
+                        throw new Error(data.error || 'Submission failed');
+                    }
+                } catch (err) {
+                    msg.style.display = 'block';
+                    msg.style.background = '#fef2f2';
+                    msg.style.color = '#991b1b';
+                    msg.textContent = 'Something went wrong. Email us directly at paul@synaptixai.com';
+                } finally {
+                    btn.textContent = 'Claim Your Free Setup';
+                    btn.disabled = false;
+                }
+            });
+            </script>
         </div>
     </div>
 </section>
