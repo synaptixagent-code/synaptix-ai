@@ -133,16 +133,16 @@
         .compare-card.good .compare-item svg{color:#22c55e}
 
         /* Results */
-        .results{padding:80px 0;background:linear-gradient(135deg,var(--dark) 0%,#0c1222 100%);position:relative;overflow:hidden}
+        .results{padding:80px 0;background:linear-gradient(135deg,#161d30 0%,#1a2340 100%);border:1px solid rgba(255,255,255,.06);border-radius:24px;margin:0 28px;position:relative;overflow:hidden}
         .results::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
         .results-header{text-align:center;margin-bottom:48px;position:relative}
         .results-header h2{font-size:2.2rem;font-weight:800;color:#fff;margin:16px 0}
         .results-header p{color:var(--gray-light);font-size:1.05rem}
         .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
-        .result-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px 28px;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
+        .result-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:36px 28px;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
         .result-card:hover{background:rgba(255,255,255,.08);border-color:rgba(96,165,250,.3);transform:translateY(-4px)}
         .result-num{font-size:2.6rem;font-weight:900;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
-        .result-label{font-size:.9rem;color:var(--gray-light);margin-top:8px}
+        .result-label{font-size:.9rem;color:#cbd5e1;margin-top:8px}
 
         /* Testimonials */
         .testimonials{padding:80px 0}
@@ -483,41 +483,6 @@
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-    <div class="container">
-        <div class="testimonials-header fade-up">
-            <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>What People Say</div>
-            <h2>Trusted by local businesses</h2>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial fade-up">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <div class="testimonial-text">"I'm a one-man HVAC operation in Catonsville. I was getting maybe 10-12 web leads a month and honestly, I'd get to most of them the next morning at best. I knew I was losing jobs but I couldn't exactly stop a repair to check email. Now every lead gets a professional response within a minute of coming in. Last month I booked 4 extra jobs I definitely would have lost — that's close to $5,800 in revenue from something I literally don't think about anymore."</div>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">JR</div>
-                    <div class="testimonial-info"><h4>James R.</h4><p>HVAC Contractor, Catonsville</p></div>
-                </div>
-            </div>
-            <div class="testimonial fade-up">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <div class="testimonial-text">"I run a cleaning company in Ellicott City and I'm not a tech person at all. My daughter had to set up my Facebook page for me. So when I heard 'AI' I almost didn't sign up. But the setup literally took 15 minutes on a phone call and I didn't have to do anything on my end. My close rate went from maybe 40% to over 70% in the first month. The responses sound exactly like something I'd write, just way faster. My favorite part is I can see every lead on a little dashboard on my phone."</div>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">SM</div>
-                    <div class="testimonial-info"><h4>Sarah M.</h4><p>House Cleaning, Ellicott City</p></div>
-                </div>
-            </div>
-            <div class="testimonial fade-up">
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <div class="testimonial-text">"I do roofing and gutters in Towson and the surrounding area. Roofing leads are expensive — I'm paying $40-60 per lead on Google Ads. Before Synaptix, I'd estimate I was losing at least 5-6 leads a month just from slow follow-up. At an average job value of $3,200, that's insane when you do the math. This past quarter I closed $18K in jobs that came through while I was on a roof or driving between sites. Best $250 a month I spend, and it's not even close."</div>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">DK</div>
-                    <div class="testimonial-info"><h4>David K.</h4><p>Roofing, Towson</p></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- OFFER -->
 <section class="offer" id="offer">
