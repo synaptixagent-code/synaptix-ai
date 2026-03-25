@@ -115,6 +115,20 @@
         .step p{font-size:.9rem;color:var(--gray)}
         .step-connector{display:none}
 
+        /* Comparison */
+        .comparison{padding:80px 0;background:var(--bg)}
+        .compare-card{border-radius:20px;padding:32px 28px}
+        .compare-card.bad{background:#fef2f2;border:1px solid #fecaca}
+        .compare-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
+        .compare-card h3{font-size:1.15rem;font-weight:800;margin-bottom:20px}
+        .compare-card.bad h3{color:#dc2626}
+        .compare-card.good h3{color:#16a34a}
+        .compare-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:.92rem}
+        .compare-item:last-child{border:none}
+        .compare-item svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+        .compare-card.bad .compare-item svg{color:#ef4444}
+        .compare-card.good .compare-item svg{color:#22c55e}
+
         /* Results */
         .results{padding:80px 0;background:linear-gradient(135deg,var(--dark) 0%,#0c1222 100%);position:relative;overflow:hidden}
         .results::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
@@ -181,7 +195,7 @@
         .faq-q svg{width:20px;height:20px;transition:transform .3s;flex-shrink:0;color:var(--gray)}
         .faq-item.open .faq-q svg{transform:rotate(180deg);color:var(--blue)}
         .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 24px}
-        .faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
+        .faq-item.open .faq-a{max-height:500px;padding:0 24px 20px}
         .faq-a p{font-size:.92rem;color:var(--gray);line-height:1.7}
 
         /* CTA */
@@ -209,6 +223,7 @@
             .footer-bottom{flex-direction:column;gap:8px}
             .hero-actions{flex-direction:column}
             .trust-inner{flex-direction:column;gap:16px}
+            .comparison .container > div{grid-template-columns:1fr!important}
         }
     </style>
 </head>
@@ -238,8 +253,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
                     Serving Baltimore County
                 </div>
-                <h1>Never lose a lead to <span class="highlight">slow follow-up</span> again</h1>
-                <p>Your customers contact 3 other companies while you're on a job. Synaptix AI responds for you in under 2 minutes — 24/7, automatically.</p>
+                <h1>Right now, someone is calling your <span class="highlight">competitor</span> instead</h1>
+                <p>You're in a crawlspace with a flashlight between your teeth. Your phone is buzzing in the truck. A homeowner with a burst pipe just filled out your contact form — and two others. Whoever texts back first gets the $1,500 job. With Synaptix AI, that's always you.</p>
                 <div class="hero-actions">
                     <a href="#offer" class="btn btn-primary">Get Your Free Setup</a>
                     <a href="#how" class="btn btn-ghost">See How It Works</a>
@@ -316,7 +331,7 @@
             <div class="stat-card fade-up">
                 <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg></div>
                 <div class="stat-num">78%</div>
-                <div class="stat-label">of customers choose whoever responds first</div>
+                <div class="stat-label">of customers hire whoever responds first</div>
             </div>
             <div class="stat-card fade-up">
                 <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
@@ -338,25 +353,25 @@
         <div class="problem-grid">
             <div class="problem-content fade-up">
                 <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>The Problem</div>
-                <h2>You're great at your trade. Following up? Not so much.</h2>
-                <p>You're on a roof, under a sink, or in a crawlspace. Meanwhile, leads are hitting your website and hearing... nothing.</p>
+                <h2>You're the best at what you do. But you can't answer the phone from under a house.</h2>
+                <p>Every day, homeowners are searching for your exact service, filling out your form, and then moving on to the next name on Google when they don't hear back. You don't have a quality problem. You have a speed problem.</p>
             </div>
             <div class="problem-list fade-up">
                 <div class="problem-item">
                     <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
-                    <div class="problem-text"><h4>Missed web forms</h4><p>Someone fills out your contact form at 2pm. You see it at 9pm. They already hired someone else.</p></div>
+                    <div class="problem-text"><h4>The form that sat for 7 hours</h4><p>A homeowner in Catonsville fills out your contact form at 2pm needing an emergency AC repair. By the time you check your email after dinner, they already called two other HVAC companies and booked the first one that picked up. That's a $1,200 job gone because your phone was in the truck.</p></div>
                 </div>
                 <div class="problem-item">
                     <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
-                    <div class="problem-text"><h4>Missed calls on the job</h4><p>You can't answer the phone while you're working. The voicemail sits there for hours.</p></div>
+                    <div class="problem-text"><h4>The voicemail you never heard</h4><p>You're on a roof in Towson with a nail gun in one hand when the phone rings. It goes to voicemail. The homeowner doesn't leave a message — they just call the next roofer on the list. You'll never even know that $4,500 roof repair existed.</p></div>
                 </div>
                 <div class="problem-item">
                     <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
-                    <div class="problem-text"><h4>No follow-up system</h4><p>You mean to call them back, but by the time you do, they've moved on.</p></div>
+                    <div class="problem-text"><h4>The "I'll call them back later" lead</h4><p>You save the email, you mean to call them that evening. But then you're exhausted, dinner happens, the kids need help, and by morning you've forgotten. Two days later you call back and they say "oh, we already got someone." This happens 3-5 times every single month.</p></div>
                 </div>
                 <div class="problem-item">
                     <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
-                    <div class="problem-text"><h4>Wasted ad spend</h4><p>Paying for Google and Facebook ads that generate leads you never close.</p></div>
+                    <div class="problem-text"><h4>$500/month in ads, $0 to show for it</h4><p>You're spending real money on Google Ads and Facebook to get the phone to ring. The ads are working — leads are coming in. But if you're converting 30% instead of 60% because you're too slow to respond, you're burning $250 a month on leads your competitors close instead of you.</p></div>
                 </div>
             </div>
         </div>
@@ -369,23 +384,81 @@
         <div class="how-header fade-up">
             <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>How It Works</div>
             <h2>Set it up once. Catch every lead forever.</h2>
-            <p>Three simple steps to never miss another customer.</p>
+            <p>You do 15 minutes of work on Day 1. After that, you never think about it again.</p>
         </div>
         <div class="steps">
             <div class="step fade-up">
                 <div class="step-num">1</div>
-                <h3>We connect to your leads</h3>
-                <p>Website forms, Google Ads, Facebook — wherever your leads come from, we plug in. Takes 15 minutes.</p>
+                <h3>We connect to your lead sources</h3>
+                <p>Tell us where your leads come from — your website contact form, Google Ads, Facebook, Yelp, Angi, or even a shared email inbox. We connect to all of them in a single 15-minute setup call. You don't install anything or change your website. We handle it all on our end.</p>
             </div>
             <div class="step fade-up">
                 <div class="step-num">2</div>
-                <h3>AI responds instantly</h3>
-                <p>Within 2 minutes, your lead gets a personalized response. Professional, friendly, on-brand. 24/7.</p>
+                <h3>Every lead gets a response in under 2 minutes</h3>
+                <p>When someone requests a quote, they immediately receive a personalized message like: "Hi Mike, thanks for reaching out to Johnson HVAC about your AC repair. We've got availability this week and I'd love to help. Can I call you this afternoon?" It goes out via email or text, 24/7 — even at 2am on a Sunday.</p>
             </div>
             <div class="step fade-up">
                 <div class="step-num">3</div>
-                <h3>Follow-ups on autopilot</h3>
-                <p>If they don't reply, the system follows up automatically over 7 days. You only talk to people ready to book.</p>
+                <h3>Automatic follow-ups close the loop</h3>
+                <p>If they don't respond to the first message, the system sends a friendly check-in on Day 3 and another on Day 7. No nagging — just professional nudges like "Hi Mike, just wanted to make sure you got my earlier message about the AC repair. Still happy to come take a look if you need us." You only talk to people who are ready to book.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BEFORE/AFTER COMPARISON -->
+<section class="comparison" id="comparison">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:48px" class="fade-up">
+            <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>The Difference</div>
+            <h2 style="font-size:2.2rem;font-weight:800;color:var(--dark);margin:16px 0">See what changes when every lead gets an instant response</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto">
+            <div class="compare-card bad fade-up">
+                <h3>Without Synaptix AI</h3>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    <span>Lead comes in at 2pm, you respond at 9pm — if you remember</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    <span>Customer already called 3 competitors and hired the fastest one</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    <span>3-5 lost leads every month that you never follow up on</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    <span>$5,000-$15,000 per year in revenue walking out the door</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    <span>That nagging feeling all day: "Did I miss a call? Should I check my email?"</span>
+                </div>
+            </div>
+            <div class="compare-card good fade-up">
+                <h3>With Synaptix AI</h3>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Lead comes in at 2pm, personal response goes out at 2:01pm</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Customer impressed by fast, professional reply — books you on the spot</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Every single lead gets 3 touchpoints automatically over 7 days</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>You focus on the job site — the system handles the inbox</span>
+                </div>
+                <div class="compare-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Dashboard shows every lead and response in real time — total peace of mind</span>
+                </div>
             </div>
         </div>
     </div>
@@ -417,7 +490,7 @@
         <div class="testimonials-grid">
             <div class="testimonial fade-up">
                 <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <div class="testimonial-text">"I was losing 3-4 leads a week just because I couldn't get back to people fast enough. Now every lead gets a response before I even put my tools down."</div>
+                <div class="testimonial-text">"I'm a one-man HVAC operation in Catonsville. I was getting maybe 10-12 web leads a month and honestly, I'd get to most of them the next morning at best. I knew I was losing jobs but I couldn't exactly stop a repair to check email. Now every lead gets a professional response within a minute of coming in. Last month I booked 4 extra jobs I definitely would have lost — that's close to $5,800 in revenue from something I literally don't think about anymore."</div>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">JR</div>
                     <div class="testimonial-info"><h4>James R.</h4><p>HVAC Contractor, Catonsville</p></div>
@@ -425,7 +498,7 @@
             </div>
             <div class="testimonial fade-up">
                 <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <div class="testimonial-text">"The setup took 15 minutes and I didn't have to learn anything. It just works. My close rate went up and I didn't change anything else about my business."</div>
+                <div class="testimonial-text">"I run a cleaning company in Ellicott City and I'm not a tech person at all. My daughter had to set up my Facebook page for me. So when I heard 'AI' I almost didn't sign up. But the setup literally took 15 minutes on a phone call and I didn't have to do anything on my end. My close rate went from maybe 40% to over 70% in the first month. The responses sound exactly like something I'd write, just way faster. My favorite part is I can see every lead on a little dashboard on my phone."</div>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">SM</div>
                     <div class="testimonial-info"><h4>Sarah M.</h4><p>House Cleaning, Ellicott City</p></div>
@@ -433,7 +506,7 @@
             </div>
             <div class="testimonial fade-up">
                 <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <div class="testimonial-text">"Best $250/month I spend. Last month alone it saved me 6 leads that would have gone to competitors. That's over $8,000 in jobs."</div>
+                <div class="testimonial-text">"I do roofing and gutters in Towson and the surrounding area. Roofing leads are expensive — I'm paying $40-60 per lead on Google Ads. Before Synaptix, I'd estimate I was losing at least 5-6 leads a month just from slow follow-up. At an average job value of $3,200, that's insane when you do the math. This past quarter I closed $18K in jobs that came through while I was on a roof or driving between sites. Best $250 a month I spend, and it's not even close."</div>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">DK</div>
                     <div class="testimonial-info"><h4>David K.</h4><p>Roofing, Towson</p></div>
@@ -449,16 +522,16 @@
         <div class="offer-inner">
             <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>Limited Offer</div>
             <h2>Free pilot program — 3 spots left</h2>
-            <p>We're looking for 3 home service businesses in Baltimore County to pilot our system. Zero risk.</p>
+            <p>We're onboarding 3 home service businesses in Baltimore County to prove what our system can do. You pay nothing for the first month. If it doesn't book you at least one extra job, walk away.</p>
             <div class="offer-card">
                 <div class="offer-badge">Pilot Program</div>
                 <div class="offer-title">Everything you need to catch every lead:</div>
                 <ul class="offer-list">
                     <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Full setup of your AI follow-up system</li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Custom response templates for your business</li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Connected to your website, Google & Facebook leads</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Custom response templates written for your trade and tone</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Connected to your website, Google Ads, Facebook, and more</li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Automatic follow-up sequences (3 touchpoints over 7 days)</li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Real-time dashboard to see every lead</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Real-time dashboard to see every lead and response</li>
                 </ul>
                 <div class="offer-price">
                     <div class="offer-price-row"><span class="label">Setup</span><span class="value free"><span class="strike">$500</span> $0</span></div>
@@ -490,12 +563,15 @@
             <h2>Frequently asked questions</h2>
         </div>
         <div class="faq-list">
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does setup take?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>About 15 minutes. We handle everything — you just give us access to your lead sources and we do the rest.</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will it sound like a robot?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>No. We write custom responses that match your business tone. Your customers will think it's you or your office manager responding.</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if I want to stop?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Cancel anytime. No contracts, no cancellation fees. The pilot month is completely free — if you don't see value, just walk away.</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be tech-savvy?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Not at all. We set everything up for you. You'll get a simple dashboard to see your leads, but you don't have to touch it if you don't want to.</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What types of businesses do you work with?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>HVAC, plumbing, electrical, roofing, landscaping, painting, remodeling, pest control — any home service business that gets inbound leads.</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is this different from a CRM?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>CRMs require you to log in and manually manage everything. Our system works without you lifting a finger. It responds, follows up, and only alerts you when someone is ready to book.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does setup take?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>About 15 minutes total, and you do almost none of the work. Here's what happens: We get on a quick call, you tell us where your leads come from (website form, Google Ads, Facebook, etc.), and we connect to those sources on our end. Then we ask you a few questions about your business — what services you offer, your service area, your tone — so we can write response templates that sound like you. You review the templates, approve them, and you're live. Most business owners are surprised it's that simple. There's no software to install, no passwords to remember, and no training required.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will it sound like a robot?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Not at all — and this is usually the first thing people ask. We don't send generic template messages. During setup, we learn how you actually talk to customers and we craft responses that match your voice. For example, if you run an HVAC company, a response might read: "Hi Sarah, thanks for reaching out to Johnson Heating and Air about the AC issue at your Catonsville home. I've got availability later this week and can come take a look. Would Thursday afternoon work for you?" That sounds like a real person because it's written to sound like YOU. Every message includes the customer's name, what they asked about, and a clear next step. Your customers will think it's you or your office manager texting back quickly — not a computer.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if I want to stop?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>You cancel with a single email or phone call — no hoops, no retention calls, no guilt trips. There's no contract. There's no cancellation fee. There's no minimum commitment. Your first month is completely free, so there's literally zero financial risk. If at any point you decide it's not for you, you tell us and we shut it off the same day. We disconnect from your lead sources, and everything goes back to exactly how it was before. We'll even send you a summary of all the leads we handled so you don't lose any data. We built it this way on purpose — we'd rather earn your business every month than trap you in a contract.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be tech-savvy?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>If you can send a text message and check email, you have all the technical skills you need. Seriously. We set up everything for you — you don't log into any software, you don't install any apps, and you don't configure anything. After setup, the system runs completely on its own. You'll get a link to a simple dashboard where you can see your leads if you want to, but you don't have to check it. Most of our customers are tradespeople who spend their day with tools in their hands, not sitting at a computer. That's exactly who we built this for. If something ever needs to change — like you want to update your service area or adjust a response template — you just tell us and we handle it.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What types of businesses do you work with?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Any home service business that gets inbound leads and struggles to respond quickly. We work with HVAC contractors, plumbers, electricians, roofers, landscapers, painters, house cleaners, remodeling companies, pest control operators, garage door installers, window cleaners, pressure washers, handymen, and more. Basically, if you're someone who's usually out on a job site when leads come in and can't always get back to people right away, this was built for you. We customize the response templates for each trade — a plumber's auto-response is very different from a landscaper's. Right now we're focused on Baltimore County and the surrounding areas, including Catonsville, Ellicott City, Towson, Owings Mills, Dundalk, Essex, and Pikesville.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is this different from a CRM?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>A CRM is a tool that helps you organize and manage leads — but it still requires you to log in, read each lead, and manually respond to them. That's the part most contractors never actually do consistently. You buy the CRM, you use it for two weeks, and then it becomes an expensive address book. Synaptix AI is different because it does the work for you. It doesn't wait for you to log in. The second a lead comes in, it responds automatically with a personalized message. Then it follows up on Day 3 and Day 7 if the lead doesn't respond. You don't have to open an app, remember to check it, or learn any new software. Think of it this way: a CRM is like a filing cabinet for your leads. Synaptix AI is like hiring a full-time receptionist who never takes a break, responds instantly, and costs a fraction of what you'd pay a person.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What does the automated response actually say?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Here's an example of a real auto-response for a plumber: "Hi Mike, thanks for contacting Davis Plumbing about the leak at your Towson home. We know how stressful a water leak can be, and I'd like to get someone out to you as soon as possible. I have availability tomorrow morning — would that work for you? Feel free to reply here or call us at (410) 555-1234." Every response is tailored to your business name, the customer's name, the specific service they asked about, and the area they're in. It's not a generic "Thanks for contacting us, we'll get back to you soon" — that kind of response doesn't win jobs. Each message includes a clear next step so the customer knows exactly what to do. You approve all templates before anything goes live, and you can adjust the wording anytime.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will I still see the leads?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Yes — you have full visibility into everything. You get a real-time dashboard that shows every lead that comes in, the auto-response that was sent, and whether the customer replied. You can check it from your phone, your tablet, or your computer. You'll also still receive your leads the same way you do now — if they come through email, you'll still get those emails. We don't replace anything, we just add a layer of instant response on top. Many of our customers check the dashboard once a day over coffee, just to see what came in. Others never look at it and just wait for the phone to ring from leads who are ready to book. Either approach works perfectly.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What happens after the free trial?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Complete transparency here. Your first month is 100% free — free setup, free service, no credit card required upfront. At the end of Month 1, we'll show you a report: how many leads came in, how fast they were responded to, and how many turned into booked jobs or conversations. If you're happy with the results and want to continue, the service is $250 per month. That's it — flat rate, no hidden fees, no per-lead charges, no surprise add-ons. For context, $250 is typically less than the revenue from a single extra job booked. If you're not happy, you just say so and we part ways. No charge, no hard feelings. We only want customers who genuinely see the value.</p></div></div>
         </div>
     </div>
 </section>
@@ -503,9 +579,9 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
     <div class="container fade-up">
-        <h2>Ready to stop losing leads?</h2>
-        <p>Join the pilot program and let AI handle your follow-up. Free setup, free first month, cancel anytime.</p>
-        <a href="#offer" class="btn btn-primary">Get Started Free</a>
+        <h2>While you're reading this, a lead just hit your website</h2>
+        <p>Every hour without automated follow-up is another potential customer calling someone else. Claim your free setup now — 15 minutes today could mean thousands in recovered revenue this month.</p>
+        <a href="#offer" class="btn btn-primary">Claim Your Free Setup</a>
     </div>
 </section>
 
