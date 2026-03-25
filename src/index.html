@@ -3,312 +3,567 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synaptix AI — Stop Losing Leads to Slow Follow-Up</title>
-    <meta name="description" content="AI-powered lead follow-up for home service businesses in Baltimore County. Respond to every lead in under 2 minutes — automatically.">
+    <title>Synaptix AI — AI-Powered Lead Follow-Up for Service Businesses</title>
+    <meta name="description" content="Stop losing leads to slow follow-up. Synaptix AI responds to your leads in under 2 minutes — automatically. Serving Baltimore County home service businesses.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><text x='16' y='22' text-anchor='middle' fill='white' font-size='18' font-weight='bold' font-family='system-ui'>S</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        :root{--blue:#2563eb;--blue-dark:#1d4ed8;--blue-light:#eff6ff;--blue-glow:rgba(37,99,235,.15);--dark:#0f172a;--dark2:#1e293b;--gray:#64748b;--gray-light:#94a3b8;--border:#e2e8f0;--bg:#fafbfe}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Inter',system-ui,sans-serif;color:#1a1a2e;line-height:1.6;background:#fff}
-        .container{max-width:1100px;margin:0 auto;padding:0 24px}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:#334155;line-height:1.7;background:#fff;-webkit-font-smoothing:antialiased}
+        .container{max-width:1140px;margin:0 auto;padding:0 28px}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:all .25s}
+        .btn-primary{background:var(--blue);color:#fff;padding:14px 32px;border-radius:12px;font-size:1rem;box-shadow:0 4px 15px rgba(37,99,235,.25)}
+        .btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,99,235,.35)}
+        .btn-ghost{background:transparent;color:var(--blue);padding:14px 32px;border-radius:12px;font-size:1rem;border:2px solid var(--blue)}
+        .btn-ghost:hover{background:var(--blue-light)}
+        .section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--blue-light);color:var(--blue);padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
+        .section-tag svg{width:14px;height:14px}
+        .fade-up{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+        .fade-up.visible{opacity:1;transform:translateY(0)}
 
         /* Nav */
-        nav{padding:16px 0;border-bottom:1px solid #f0f0f5;position:sticky;top:0;background:rgba(255,255,255,.97);z-index:100;backdrop-filter:blur(10px)}
-        .nav-inner{display:flex;justify-content:space-between;align-items:center}
-        .logo{font-size:1.3rem;font-weight:800;color:#1a1a2e}
-        .logo span{color:#2563eb}
-        .nav-cta{background:#2563eb;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s}
-        .nav-cta:hover{background:#1d4ed8;transform:translateY(-1px)}
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px)saturate(180%);border-bottom:1px solid rgba(226,232,240,.6);transition:all .3s}
+        nav.scrolled{box-shadow:0 1px 20px rgba(0,0,0,.06)}
+        .nav-inner{display:flex;justify-content:space-between;align-items:center;height:64px}
+        .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+        .logo-icon{width:36px;height:36px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center}
+        .logo-icon svg{width:20px;height:20px}
+        .logo-text{font-size:1.2rem;font-weight:800;color:var(--dark)}
+        .logo-text span{color:var(--blue)}
+        .nav-links{display:flex;align-items:center;gap:32px}
+        .nav-links a{text-decoration:none;color:var(--gray);font-size:.9rem;font-weight:500;transition:color .2s}
+        .nav-links a:hover{color:var(--dark)}
+        .nav-cta{background:var(--blue);color:#fff!important;padding:9px 22px;border-radius:10px;font-weight:600!important;box-shadow:0 2px 10px rgba(37,99,235,.2)}
+        .nav-cta:hover{background:var(--blue-dark)!important;color:#fff!important}
 
         /* Hero */
-        .hero{padding:80px 0 60px;text-align:center}
-        .hero-badge{display:inline-block;background:#eff6ff;color:#2563eb;padding:6px 16px;border-radius:20px;font-size:.82rem;font-weight:600;margin-bottom:20px}
-        .hero h1{font-size:3rem;font-weight:800;line-height:1.15;margin-bottom:20px;color:#0f172a}
-        .hero h1 em{font-style:normal;color:#2563eb}
-        .hero p{font-size:1.15rem;color:#64748b;max-width:600px;margin:0 auto 32px}
-        .hero-cta{display:inline-block;background:#2563eb;color:#fff;padding:14px 36px;border-radius:10px;text-decoration:none;font-weight:700;font-size:1.05rem;transition:all .2s;box-shadow:0 4px 14px rgba(37,99,235,.3)}
-        .hero-cta:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.4)}
-        .hero-sub{margin-top:14px;font-size:.85rem;color:#94a3b8}
+        .hero{padding:140px 0 80px;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 70%);pointer-events:none}
+        .hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(37,99,235,.05) 0%,transparent 70%);pointer-events:none}
+        .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        .hero-content{position:relative;z-index:1}
+        .hero-badge{margin-bottom:24px}
+        .hero h1{font-size:3.2rem;font-weight:900;line-height:1.1;color:var(--dark);margin-bottom:20px;letter-spacing:-.02em}
+        .hero h1 .highlight{background:linear-gradient(135deg,var(--blue),#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:1.15rem;color:var(--gray);margin-bottom:32px;max-width:480px}
+        .hero-actions{display:flex;gap:14px;margin-bottom:20px}
+        .hero-sub{font-size:.85rem;color:var(--gray-light);display:flex;align-items:center;gap:6px}
+        .hero-sub svg{width:16px;height:16px;color:#22c55e}
+        .hero-visual{position:relative;z-index:1}
+        .hero-mockup{background:var(--dark);border-radius:20px;padding:24px;box-shadow:0 25px 60px rgba(0,0,0,.15),0 0 0 1px rgba(255,255,255,.05);position:relative;overflow:hidden}
+        .mockup-bar{display:flex;gap:6px;margin-bottom:16px}
+        .mockup-dot{width:10px;height:10px;border-radius:50%}
+        .mockup-content{background:var(--dark2);border-radius:12px;padding:20px}
+        .mockup-notif{background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:14px 16px;margin-bottom:12px;animation:slideIn .6s ease}
+        .mockup-notif-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+        .mockup-notif-dot{width:8px;height:8px;background:#22c55e;border-radius:50%}
+        .mockup-notif-title{font-size:.75rem;color:#60a5fa;font-weight:600}
+        .mockup-notif-time{font-size:.65rem;color:#475569;margin-left:auto}
+        .mockup-notif-text{font-size:.8rem;color:#94a3b8;line-height:1.4}
+        .mockup-notif-text strong{color:#e2e8f0}
+        .mockup-notif.sent{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.2)}
+        .mockup-notif.sent .mockup-notif-title{color:#4ade80}
+        .mockup-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}
+        .mockup-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px;text-align:center}
+        .mockup-stat-num{font-size:1.1rem;font-weight:800;color:#fff}
+        .mockup-stat-label{font-size:.6rem;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+        @keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
 
-        /* Stats bar */
-        .stats{display:flex;justify-content:center;gap:48px;padding:40px 0;border-top:1px solid #f0f0f5;border-bottom:1px solid #f0f0f5;margin:0 0 60px}
-        .stat{text-align:center}
-        .stat-num{font-size:2rem;font-weight:800;color:#2563eb}
-        .stat-label{font-size:.85rem;color:#64748b;margin-top:4px}
+        /* Trust bar */
+        .trust{padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .trust-inner{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+        .trust-item{display:flex;align-items:center;gap:10px;color:var(--gray)}
+        .trust-item svg{width:20px;height:20px;color:var(--blue)}
+        .trust-item span{font-size:.88rem;font-weight:600}
 
-        /* Problem section */
-        .problem{padding:60px 0;background:#f8fafc;border-radius:20px;margin-bottom:60px}
-        .problem-inner{text-align:center;max-width:700px;margin:0 auto}
-        .section-label{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:#2563eb;font-weight:700;margin-bottom:12px}
-        .problem h2{font-size:2rem;font-weight:800;margin-bottom:16px}
-        .problem p{color:#64748b;font-size:1.05rem;margin-bottom:24px}
-        .problem-list{text-align:left;max-width:500px;margin:0 auto}
-        .problem-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e2e8f0}
-        .problem-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
-        .problem-text{font-size:.95rem}
-        .problem-text strong{color:#0f172a}
+        /* Stats */
+        .stats{padding:80px 0}
+        .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .stat-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;transition:all .3s}
+        .stat-card:hover{border-color:var(--blue);box-shadow:0 8px 30px var(--blue-glow)}
+        .stat-icon{width:48px;height:48px;background:var(--blue-light);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+        .stat-icon svg{width:24px;height:24px;color:var(--blue)}
+        .stat-num{font-size:2.4rem;font-weight:900;color:var(--dark);line-height:1}
+        .stat-label{font-size:.9rem;color:var(--gray);margin-top:8px}
+
+        /* Problem */
+        .problem{padding:80px 0}
+        .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        .problem-content h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin:16px 0;line-height:1.2}
+        .problem-content>p{color:var(--gray);font-size:1.05rem;margin-bottom:32px}
+        .problem-list{display:flex;flex-direction:column;gap:16px}
+        .problem-item{display:flex;gap:14px;padding:16px;background:var(--bg);border-radius:14px;border:1px solid var(--border);transition:all .3s}
+        .problem-item:hover{border-color:#ef4444;background:#fef2f2}
+        .problem-icon{width:36px;height:36px;background:#fef2f2;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .problem-icon svg{width:18px;height:18px;color:#ef4444}
+        .problem-text h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+        .problem-text p{font-size:.85rem;color:var(--gray)}
 
         /* How it works */
-        .how{padding:60px 0}
-        .how h2{text-align:center;font-size:2rem;font-weight:800;margin-bottom:48px}
-        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-        .step{text-align:center;padding:32px 24px;border-radius:16px;border:1px solid #f0f0f5;transition:all .2s}
-        .step:hover{border-color:#2563eb;box-shadow:0 4px 20px rgba(37,99,235,.08)}
-        .step-num{width:44px;height:44px;background:#eff6ff;color:#2563eb;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 16px}
-        .step h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
-        .step p{font-size:.9rem;color:#64748b}
+        .how{padding:80px 0;background:var(--bg)}
+        .how-header{text-align:center;margin-bottom:56px}
+        .how-header h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin:16px 0}
+        .how-header p{color:var(--gray);font-size:1.05rem;max-width:550px;margin:0 auto}
+        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .step{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;position:relative;transition:all .3s}
+        .step:hover{border-color:var(--blue);box-shadow:0 8px 30px var(--blue-glow);transform:translateY(-4px)}
+        .step-num{width:48px;height:48px;background:var(--blue);color:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;margin:0 auto 20px}
+        .step h3{font-size:1.15rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+        .step p{font-size:.9rem;color:var(--gray)}
+        .step-connector{display:none}
 
         /* Results */
-        .results{padding:60px 0;background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:20px;color:#fff;margin-bottom:60px}
-        .results h2{text-align:center;font-size:2rem;font-weight:800;margin-bottom:12px}
-        .results>p{text-align:center;color:#94a3b8;margin-bottom:40px;font-size:1rem}
-        .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:0 40px}
-        .result-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 24px;text-align:center}
-        .result-num{font-size:2.2rem;font-weight:800;color:#60a5fa;margin-bottom:4px}
-        .result-text{font-size:.88rem;color:#94a3b8}
+        .results{padding:80px 0;background:linear-gradient(135deg,var(--dark) 0%,#0c1222 100%);position:relative;overflow:hidden}
+        .results::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+        .results-header{text-align:center;margin-bottom:48px;position:relative}
+        .results-header h2{font-size:2.2rem;font-weight:800;color:#fff;margin:16px 0}
+        .results-header p{color:var(--gray-light);font-size:1.05rem}
+        .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+        .result-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px 28px;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
+        .result-card:hover{background:rgba(255,255,255,.08);border-color:rgba(96,165,250,.3);transform:translateY(-4px)}
+        .result-num{font-size:2.6rem;font-weight:900;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+        .result-label{font-size:.9rem;color:var(--gray-light);margin-top:8px}
+
+        /* Testimonials */
+        .testimonials{padding:80px 0}
+        .testimonials-header{text-align:center;margin-bottom:48px}
+        .testimonials-header h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin:16px 0}
+        .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .testimonial{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:28px}
+        .testimonial-stars{color:#f59e0b;font-size:.9rem;letter-spacing:2px;margin-bottom:12px}
+        .testimonial-text{font-size:.95rem;color:#475569;line-height:1.7;margin-bottom:16px;font-style:italic}
+        .testimonial-author{display:flex;align-items:center;gap:12px}
+        .testimonial-avatar{width:40px;height:40px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:.9rem}
+        .testimonial-info h4{font-size:.88rem;font-weight:700;color:var(--dark)}
+        .testimonial-info p{font-size:.78rem;color:var(--gray)}
 
         /* Offer */
-        .offer{padding:60px 0;text-align:center}
-        .offer h2{font-size:2rem;font-weight:800;margin-bottom:12px}
-        .offer>p{color:#64748b;margin-bottom:32px;font-size:1.05rem}
-        .offer-card{max-width:500px;margin:0 auto;background:#f8fafc;border:2px solid #2563eb;border-radius:20px;padding:40px 32px;text-align:left}
-        .offer-title{font-size:1.3rem;font-weight:800;color:#2563eb;margin-bottom:16px}
-        .offer-list{list-style:none;margin-bottom:24px}
-        .offer-list li{padding:8px 0;font-size:.95rem;display:flex;gap:10px;align-items:flex-start}
-        .offer-list li::before{content:">";color:#2563eb;font-weight:700;flex-shrink:0}
-        .offer-price{font-size:.95rem;color:#64748b;margin-bottom:24px;padding:16px;background:#fff;border-radius:10px;border:1px solid #e2e8f0}
-        .offer-price strong{color:#0f172a;font-size:1.1rem}
-        .offer-cta{display:block;background:#2563eb;color:#fff;padding:16px;border-radius:10px;text-decoration:none;font-weight:700;font-size:1.05rem;text-align:center;transition:all .2s}
-        .offer-cta:hover{background:#1d4ed8;transform:translateY(-2px)}
+        .offer{padding:80px 0;background:var(--bg)}
+        .offer-inner{max-width:640px;margin:0 auto;text-align:center}
+        .offer-inner h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin:16px 0}
+        .offer-inner>p{color:var(--gray);font-size:1.05rem;margin-bottom:40px}
+        .offer-card{background:#fff;border:2px solid var(--blue);border-radius:24px;padding:44px 36px;text-align:left;box-shadow:0 20px 60px rgba(37,99,235,.08)}
+        .offer-badge{display:inline-block;background:var(--blue);color:#fff;padding:4px 12px;border-radius:8px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px}
+        .offer-title{font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:20px}
+        .offer-list{list-style:none;margin-bottom:28px}
+        .offer-list li{padding:10px 0;font-size:.95rem;display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid #f1f5f9}
+        .offer-list li:last-child{border:none}
+        .offer-list li svg{width:20px;height:20px;color:#22c55e;flex-shrink:0;margin-top:2px}
+        .offer-price{background:var(--bg);border-radius:14px;padding:20px;margin-bottom:28px;border:1px solid var(--border)}
+        .offer-price-row{display:flex;justify-content:space-between;padding:6px 0;font-size:.95rem}
+        .offer-price-row .label{color:var(--gray)}
+        .offer-price-row .value{font-weight:700;color:var(--dark)}
+        .offer-price-row .value.free{color:#22c55e}
+        .offer-price-row .value .strike{text-decoration:line-through;color:var(--gray-light);font-weight:400;margin-right:6px;font-size:.85rem}
+        .form-group{margin-bottom:14px}
+        .form-input{width:100%;padding:14px 18px;border:2px solid var(--border);border-radius:12px;font-size:.95rem;font-family:inherit;outline:none;transition:all .2s;background:#fff}
+        .form-input:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-glow)}
+        .form-input::placeholder{color:#94a3b8}
+        .form-btn{width:100%;padding:16px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .25s;box-shadow:0 4px 15px rgba(37,99,235,.3)}
+        .form-btn:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,99,235,.4)}
+        .form-btn:disabled{opacity:.7;cursor:not-allowed;transform:none}
+        .form-msg{display:none;text-align:center;padding:14px;border-radius:12px;font-weight:600;font-size:.9rem;margin-top:14px}
+        .form-secure{text-align:center;margin-top:12px;font-size:.78rem;color:var(--gray-light);display:flex;align-items:center;justify-content:center;gap:6px}
+        .form-secure svg{width:14px;height:14px}
 
         /* FAQ */
-        .faq{padding:60px 0}
-        .faq h2{text-align:center;font-size:2rem;font-weight:800;margin-bottom:36px}
-        .faq-item{max-width:650px;margin:0 auto;border-bottom:1px solid #f0f0f5;padding:20px 0}
-        .faq-q{font-weight:700;font-size:1rem;margin-bottom:8px;cursor:pointer}
-        .faq-a{font-size:.92rem;color:#64748b}
+        .faq{padding:80px 0}
+        .faq-header{text-align:center;margin-bottom:48px}
+        .faq-header h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin:16px 0}
+        .faq-list{max-width:700px;margin:0 auto}
+        .faq-item{border:1px solid var(--border);border-radius:16px;margin-bottom:12px;overflow:hidden;transition:all .3s}
+        .faq-item.open{border-color:var(--blue);box-shadow:0 4px 20px var(--blue-glow)}
+        .faq-q{padding:20px 24px;font-weight:700;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--dark);transition:all .2s;user-select:none}
+        .faq-q:hover{color:var(--blue)}
+        .faq-q svg{width:20px;height:20px;transition:transform .3s;flex-shrink:0;color:var(--gray)}
+        .faq-item.open .faq-q svg{transform:rotate(180deg);color:var(--blue)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 24px}
+        .faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
+        .faq-a p{font-size:.92rem;color:var(--gray);line-height:1.7}
+
+        /* CTA */
+        .final-cta{padding:80px 0;text-align:center}
+        .final-cta h2{font-size:2.2rem;font-weight:800;color:var(--dark);margin-bottom:12px}
+        .final-cta p{color:var(--gray);font-size:1.05rem;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
 
         /* Footer */
-        footer{padding:40px 0;border-top:1px solid #f0f0f5;text-align:center;color:#94a3b8;font-size:.85rem}
-        footer a{color:#2563eb;text-decoration:none}
+        footer{background:var(--dark);padding:48px 0 32px;color:var(--gray-light)}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px}
+        .footer-brand .logo-text{color:#fff;font-size:1.1rem;margin-bottom:10px}
+        .footer-brand p{font-size:.85rem;line-height:1.7;max-width:280px}
+        .footer-col h4{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:#475569;margin-bottom:14px;font-weight:700}
+        .footer-col a{display:block;font-size:.88rem;color:var(--gray-light);text-decoration:none;padding:4px 0;transition:color .2s}
+        .footer-col a:hover{color:#fff}
+        .footer-bottom{border-top:1px solid #1e293b;padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
 
-        /* CTA form */
-        .cta-form{display:flex;gap:10px;max-width:450px;margin:0 auto}
-        .cta-input{flex:1;padding:14px 18px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;outline:none;font-family:inherit}
-        .cta-input:focus{border-color:#2563eb}
-        .cta-submit{background:#2563eb;color:#fff;padding:14px 28px;border:none;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;transition:all .2s}
-        .cta-submit:hover{background:#1d4ed8}
-
-        @media(max-width:768px){
-            .hero h1{font-size:2rem}
-            .stats{flex-direction:column;gap:20px}
-            .steps{grid-template-columns:1fr}
-            .result-grid{grid-template-columns:1fr;padding:0 20px}
-            .cta-form{flex-direction:column}
+        @media(max-width:900px){
+            .hero-grid,.problem-grid{grid-template-columns:1fr}
+            .hero h1{font-size:2.2rem}
+            .hero-visual{display:none}
+            .stats-grid,.steps,.results-grid,.testimonials-grid{grid-template-columns:1fr}
+            .nav-links a:not(.nav-cta){display:none}
+            .footer-grid{grid-template-columns:1fr}
+            .footer-bottom{flex-direction:column;gap:8px}
+            .hero-actions{flex-direction:column}
+            .trust-inner{flex-direction:column;gap:16px}
         }
     </style>
 </head>
 <body>
 
-<nav>
+<nav id="nav">
     <div class="container nav-inner">
-        <div class="logo"><span>Synaptix</span> AI</div>
-        <a href="#offer" class="nav-cta">Get Free Setup</a>
+        <a href="#" class="logo">
+            <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></div>
+            <div class="logo-text"><span>Synaptix</span> AI</div>
+        </a>
+        <div class="nav-links">
+            <a href="#how">How It Works</a>
+            <a href="#results">Results</a>
+            <a href="#faq">FAQ</a>
+            <a href="#offer" class="nav-cta">Get Free Setup</a>
+        </div>
     </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
     <div class="container">
-        <div class="hero-badge">Serving Home Service Businesses in Baltimore County</div>
-        <h1>Stop losing jobs to <em>slow follow-up</em></h1>
-        <p>Your leads contact 3 other companies while you're on a job. Synaptix AI responds for you in under 2 minutes — automatically. Never miss another customer.</p>
-        <a href="#offer" class="hero-cta">Get Your Free Setup</a>
-        <div class="hero-sub">Free setup for the first 3 businesses. No contracts.</div>
+        <div class="hero-grid">
+            <div class="hero-content fade-up">
+                <div class="section-tag hero-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                    Serving Baltimore County
+                </div>
+                <h1>Never lose a lead to <span class="highlight">slow follow-up</span> again</h1>
+                <p>Your customers contact 3 other companies while you're on a job. Synaptix AI responds for you in under 2 minutes — 24/7, automatically.</p>
+                <div class="hero-actions">
+                    <a href="#offer" class="btn btn-primary">Get Your Free Setup</a>
+                    <a href="#how" class="btn btn-ghost">See How It Works</a>
+                </div>
+                <div class="hero-sub">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Free setup for the first 3 businesses. No contracts.
+                </div>
+            </div>
+            <div class="hero-visual fade-up">
+                <div class="hero-mockup">
+                    <div class="mockup-bar">
+                        <div class="mockup-dot" style="background:#ef4444"></div>
+                        <div class="mockup-dot" style="background:#f59e0b"></div>
+                        <div class="mockup-dot" style="background:#22c55e"></div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-notif">
+                            <div class="mockup-notif-header">
+                                <div class="mockup-notif-dot"></div>
+                                <div class="mockup-notif-title">New Lead Received</div>
+                                <div class="mockup-notif-time">Just now</div>
+                            </div>
+                            <div class="mockup-notif-text"><strong>Mike Johnson</strong> requested a quote for HVAC repair in Catonsville, MD</div>
+                        </div>
+                        <div class="mockup-notif sent">
+                            <div class="mockup-notif-header">
+                                <div class="mockup-notif-dot" style="background:#22c55e"></div>
+                                <div class="mockup-notif-title">Auto-Response Sent</div>
+                                <div class="mockup-notif-time">1 min ago</div>
+                            </div>
+                            <div class="mockup-notif-text">Personalized response sent to <strong>Mike</strong>. Follow-ups scheduled for Day 3 and Day 7.</div>
+                        </div>
+                        <div class="mockup-stats">
+                            <div class="mockup-stat"><div class="mockup-stat-num">24</div><div class="mockup-stat-label">Leads This Week</div></div>
+                            <div class="mockup-stat"><div class="mockup-stat-num">1.4m</div><div class="mockup-stat-label">Avg Response</div></div>
+                            <div class="mockup-stat"><div class="mockup-stat-num">89%</div><div class="mockup-stat-label">Reply Rate</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<div class="container">
-    <div class="stats">
-        <div class="stat"><div class="stat-num">78%</div><div class="stat-label">of customers choose whoever responds first</div></div>
-        <div class="stat"><div class="stat-num">47 hrs</div><div class="stat-label">average response time for service businesses</div></div>
-        <div class="stat"><div class="stat-num">100x</div><div class="stat-label">more likely to close if you respond in 5 min</div></div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="problem">
-        <div class="problem-inner">
-            <div class="section-label">The Problem</div>
-            <h2>You're great at your trade. Following up? Not so much.</h2>
-            <p>You're on a roof, under a sink, or in the crawlspace. Meanwhile, leads are hitting your website and hearing... nothing.</p>
-            <div class="problem-list">
-                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>Missed web forms</strong> — Someone fills out your contact form at 2pm. You see it at 9pm. They already hired someone else.</div></div>
-                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>Missed calls</strong> — You can't answer the phone while you're on a job. The voicemail sits there for hours.</div></div>
-                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>No follow-up system</strong> — You mean to call them back, but by the time you do, they've moved on.</div></div>
-                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>Wasted ad spend</strong> — You're paying for Google/Facebook ads that generate leads you never close.</div></div>
+<!-- TRUST -->
+<div class="trust">
+    <div class="container">
+        <div class="trust-inner">
+            <div class="trust-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                <span>256-bit Encrypted</span>
+            </div>
+            <div class="trust-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>Responds in Under 2 Minutes</span>
+            </div>
+            <div class="trust-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                <span>Setup in 15 Minutes</span>
+            </div>
+            <div class="trust-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
+                <span>AI-Powered</span>
             </div>
         </div>
     </div>
 </div>
 
-<section class="how">
+<!-- STATS -->
+<section class="stats">
     <div class="container">
-        <div class="section-label" style="text-align:center">How It Works</div>
-        <h2>Set it up once. Catch every lead forever.</h2>
+        <div class="stats-grid">
+            <div class="stat-card fade-up">
+                <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg></div>
+                <div class="stat-num">78%</div>
+                <div class="stat-label">of customers choose whoever responds first</div>
+            </div>
+            <div class="stat-card fade-up">
+                <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                <div class="stat-num">47 hrs</div>
+                <div class="stat-label">average response time for service businesses</div>
+            </div>
+            <div class="stat-card fade-up">
+                <div class="stat-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg></div>
+                <div class="stat-num">100x</div>
+                <div class="stat-label">more likely to close if you respond in 5 min</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+    <div class="container">
+        <div class="problem-grid">
+            <div class="problem-content fade-up">
+                <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>The Problem</div>
+                <h2>You're great at your trade. Following up? Not so much.</h2>
+                <p>You're on a roof, under a sink, or in a crawlspace. Meanwhile, leads are hitting your website and hearing... nothing.</p>
+            </div>
+            <div class="problem-list fade-up">
+                <div class="problem-item">
+                    <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                    <div class="problem-text"><h4>Missed web forms</h4><p>Someone fills out your contact form at 2pm. You see it at 9pm. They already hired someone else.</p></div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                    <div class="problem-text"><h4>Missed calls on the job</h4><p>You can't answer the phone while you're working. The voicemail sits there for hours.</p></div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                    <div class="problem-text"><h4>No follow-up system</h4><p>You mean to call them back, but by the time you do, they've moved on.</p></div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></div>
+                    <div class="problem-text"><h4>Wasted ad spend</h4><p>Paying for Google and Facebook ads that generate leads you never close.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+    <div class="container">
+        <div class="how-header fade-up">
+            <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>How It Works</div>
+            <h2>Set it up once. Catch every lead forever.</h2>
+            <p>Three simple steps to never miss another customer.</p>
+        </div>
         <div class="steps">
-            <div class="step">
+            <div class="step fade-up">
                 <div class="step-num">1</div>
                 <h3>We connect to your leads</h3>
                 <p>Website forms, Google Ads, Facebook — wherever your leads come from, we plug in. Takes 15 minutes.</p>
             </div>
-            <div class="step">
+            <div class="step fade-up">
                 <div class="step-num">2</div>
                 <h3>AI responds instantly</h3>
                 <p>Within 2 minutes, your lead gets a personalized response. Professional, friendly, on-brand. 24/7.</p>
             </div>
-            <div class="step">
+            <div class="step fade-up">
                 <div class="step-num">3</div>
                 <h3>Follow-ups on autopilot</h3>
-                <p>If they don't reply, the system follows up 3 more times over 7 days. You only talk to people who are ready to book.</p>
+                <p>If they don't reply, the system follows up automatically over 7 days. You only talk to people ready to book.</p>
             </div>
         </div>
     </div>
 </section>
 
-<div class="container">
-    <div class="results">
-        <div class="section-label" style="text-align:center;color:#60a5fa">Results</div>
-        <h2>What happens when you respond first</h2>
-        <p>Average results from businesses using AI-powered follow-up</p>
-        <div class="result-grid">
-            <div class="result-card">
-                <div class="result-num">3-5x</div>
-                <div class="result-text">More leads converted to booked jobs</div>
+<!-- RESULTS -->
+<section class="results" id="results">
+    <div class="container">
+        <div class="results-header fade-up">
+            <div class="section-tag" style="background:rgba(96,165,250,.15);color:#60a5fa"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>Results</div>
+            <h2>What happens when you respond first</h2>
+            <p>Average results from businesses using AI-powered follow-up</p>
+        </div>
+        <div class="results-grid">
+            <div class="result-card fade-up"><div class="result-num">3-5x</div><div class="result-label">More leads converted to booked jobs</div></div>
+            <div class="result-card fade-up"><div class="result-num">&lt; 2 min</div><div class="result-label">Average response time (down from 47 hours)</div></div>
+            <div class="result-card fade-up"><div class="result-num">$2K-8K</div><div class="result-label">Additional monthly revenue from saved leads</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+    <div class="container">
+        <div class="testimonials-header fade-up">
+            <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>What People Say</div>
+            <h2>Trusted by local businesses</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial fade-up">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="testimonial-text">"I was losing 3-4 leads a week just because I couldn't get back to people fast enough. Now every lead gets a response before I even put my tools down."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JR</div>
+                    <div class="testimonial-info"><h4>James R.</h4><p>HVAC Contractor, Catonsville</p></div>
+                </div>
             </div>
-            <div class="result-card">
-                <div class="result-num">&lt; 2 min</div>
-                <div class="result-text">Average response time (down from 47 hours)</div>
+            <div class="testimonial fade-up">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="testimonial-text">"The setup took 15 minutes and I didn't have to learn anything. It just works. My close rate went up and I didn't change anything else about my business."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SM</div>
+                    <div class="testimonial-info"><h4>Sarah M.</h4><p>House Cleaning, Ellicott City</p></div>
+                </div>
             </div>
-            <div class="result-card">
-                <div class="result-num">$2K-8K</div>
-                <div class="result-text">Additional monthly revenue from saved leads</div>
+            <div class="testimonial fade-up">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="testimonial-text">"Best $250/month I spend. Last month alone it saved me 6 leads that would have gone to competitors. That's over $8,000 in jobs."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">DK</div>
+                    <div class="testimonial-info"><h4>David K.</h4><p>Roofing, Towson</p></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
+<!-- OFFER -->
 <section class="offer" id="offer">
     <div class="container">
-        <div class="section-label">Limited Offer</div>
-        <h2>Free pilot program — 3 spots left</h2>
-        <p>We're looking for 3 home service businesses in Baltimore County to pilot our system. Zero risk.</p>
-        <div class="offer-card">
-            <div class="offer-title">What you get:</div>
-            <ul class="offer-list">
-                <li>Full setup of your AI follow-up system (normally $500)</li>
-                <li>Custom response templates written for your business</li>
-                <li>Connected to your website, Google, and Facebook leads</li>
-                <li>Automatic follow-up sequences (3 touchpoints over 7 days)</li>
-                <li>Dashboard to see every lead and response in real time</li>
-                <li>First month completely free</li>
-            </ul>
-            <div class="offer-price">
-                Setup: <strong>$0</strong> (normally $500)<br>
-                Month 1: <strong>$0</strong><br>
-                After trial: <strong>$250/month</strong> — cancel anytime
+        <div class="offer-inner">
+            <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>Limited Offer</div>
+            <h2>Free pilot program — 3 spots left</h2>
+            <p>We're looking for 3 home service businesses in Baltimore County to pilot our system. Zero risk.</p>
+            <div class="offer-card">
+                <div class="offer-badge">Pilot Program</div>
+                <div class="offer-title">Everything you need to catch every lead:</div>
+                <ul class="offer-list">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Full setup of your AI follow-up system</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Custom response templates for your business</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Connected to your website, Google & Facebook leads</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Automatic follow-up sequences (3 touchpoints over 7 days)</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Real-time dashboard to see every lead</li>
+                </ul>
+                <div class="offer-price">
+                    <div class="offer-price-row"><span class="label">Setup</span><span class="value free"><span class="strike">$500</span> $0</span></div>
+                    <div class="offer-price-row"><span class="label">Month 1</span><span class="value free">$0</span></div>
+                    <div class="offer-price-row" style="border-top:1px solid var(--border);padding-top:12px;margin-top:6px"><span class="label">After trial</span><span class="value">$250/mo <span style="font-weight:400;color:var(--gray);font-size:.85rem">cancel anytime</span></span></div>
+                </div>
+                <form id="leadForm">
+                    <div class="form-group"><input type="text" id="f-name" class="form-input" placeholder="Your name" required></div>
+                    <div class="form-group"><input type="text" id="f-biz" class="form-input" placeholder="Business name" required></div>
+                    <div class="form-group"><input type="tel" id="f-phone" class="form-input" placeholder="Phone number" required></div>
+                    <div class="form-group"><input type="email" id="f-email" class="form-input" placeholder="Email address" required></div>
+                    <button type="submit" id="f-btn" class="form-btn">Claim Your Free Setup</button>
+                    <div id="f-msg" class="form-msg"></div>
+                </form>
+                <div class="form-secure">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                    Your information is secure and will never be shared.
+                </div>
             </div>
-            <form id="leadForm" style="display:flex;flex-direction:column;gap:10px">
-                <input type="text" id="f-name" placeholder="Your name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <input type="text" id="f-biz" placeholder="Business name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <input type="tel" id="f-phone" placeholder="Phone number" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <input type="email" id="f-email" placeholder="Email address" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
-                <button type="submit" id="f-btn" class="offer-cta">Claim Your Free Setup</button>
-                <div id="f-msg" style="display:none;text-align:center;padding:12px;border-radius:8px;font-weight:600;font-size:.9rem"></div>
-            </form>
-            <script>
-            document.getElementById('leadForm').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const btn = document.getElementById('f-btn');
-                const msg = document.getElementById('f-msg');
-                btn.textContent = 'Submitting...';
-                btn.disabled = true;
-
-                try {
-                    const res = await fetch('https://clientpulse-synaptixagent-codes-projects.vercel.app/api/public/intake', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            name: document.getElementById('f-name').value,
-                            business: document.getElementById('f-biz').value,
-                            phone: document.getElementById('f-phone').value,
-                            email: document.getElementById('f-email').value,
-                            service: 'AI Lead Follow-Up Setup',
-                        })
-                    });
-
-                    if (res.ok) {
-                        msg.style.display = 'block';
-                        msg.style.background = '#dcfce7';
-                        msg.style.color = '#166534';
-                        msg.textContent = "You're in! We'll reach out within 24 hours to get you set up.";
-                        document.getElementById('leadForm').reset();
-                    } else {
-                        const data = await res.json();
-                        throw new Error(data.error || 'Submission failed');
-                    }
-                } catch (err) {
-                    msg.style.display = 'block';
-                    msg.style.background = '#fef2f2';
-                    msg.style.color = '#991b1b';
-                    msg.textContent = 'Something went wrong. Email us directly at paul@synaptixai.com';
-                } finally {
-                    btn.textContent = 'Claim Your Free Setup';
-                    btn.disabled = false;
-                }
-            });
-            </script>
         </div>
     </div>
 </section>
 
-<section class="faq">
+<!-- FAQ -->
+<section class="faq" id="faq">
     <div class="container">
-        <h2>Questions</h2>
-        <div class="faq-item">
-            <div class="faq-q">How long does setup take?</div>
-            <div class="faq-a">About 15 minutes. We handle everything — you just give us access to your lead sources and we do the rest.</div>
+        <div class="faq-header fade-up">
+            <div class="section-tag"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>FAQ</div>
+            <h2>Frequently asked questions</h2>
         </div>
-        <div class="faq-item">
-            <div class="faq-q">Will it sound like a robot?</div>
-            <div class="faq-a">No. We write custom responses that match your business tone. Your customers will think it's you or your office manager responding.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">What if I want to stop?</div>
-            <div class="faq-a">Cancel anytime. No contracts, no cancellation fees. The pilot month is completely free — if you don't see value, just walk away.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Do I need to be tech-savvy?</div>
-            <div class="faq-a">Not at all. We set everything up for you. You'll get a simple dashboard to see your leads, but you don't have to touch it if you don't want to.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">What types of businesses do you work with?</div>
-            <div class="faq-a">HVAC, plumbing, electrical, roofing, landscaping, painting, remodeling, pest control — any home service business that gets inbound leads.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">How is this different from a CRM?</div>
-            <div class="faq-a">CRMs require you to log in and manually manage everything. Our system works without you lifting a finger. It responds, follows up, and only alerts you when someone is ready to book.</div>
+        <div class="faq-list">
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does setup take?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>About 15 minutes. We handle everything — you just give us access to your lead sources and we do the rest.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will it sound like a robot?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>No. We write custom responses that match your business tone. Your customers will think it's you or your office manager responding.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if I want to stop?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Cancel anytime. No contracts, no cancellation fees. The pilot month is completely free — if you don't see value, just walk away.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to be tech-savvy?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>Not at all. We set everything up for you. You'll get a simple dashboard to see your leads, but you don't have to touch it if you don't want to.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What types of businesses do you work with?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>HVAC, plumbing, electrical, roofing, landscaping, painting, remodeling, pest control — any home service business that gets inbound leads.</p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is this different from a CRM?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div><div class="faq-a"><p>CRMs require you to log in and manually manage everything. Our system works without you lifting a finger. It responds, follows up, and only alerts you when someone is ready to book.</p></div></div>
         </div>
     </div>
 </section>
 
+<!-- FINAL CTA -->
+<section class="final-cta">
+    <div class="container fade-up">
+        <h2>Ready to stop losing leads?</h2>
+        <p>Join the pilot program and let AI handle your follow-up. Free setup, free first month, cancel anytime.</p>
+        <a href="#offer" class="btn btn-primary">Get Started Free</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
     <div class="container">
-        <div class="logo" style="margin-bottom:12px"><span>Synaptix</span> AI</div>
-        <p>AI-Powered Lead Follow-Up for Home Service Businesses</p>
-        <p style="margin-top:8px">Serving Baltimore County, Catonsville, Ellicott City, Towson & surrounding areas</p>
-        <p style="margin-top:16px">&copy; 2026 Synaptix AI. All rights reserved.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-text" style="margin-bottom:12px"><span>Synaptix</span> AI</div>
+                <p>AI-powered lead follow-up for home service businesses. Never miss another customer.</p>
+                <p style="margin-top:12px">Serving Baltimore County, Catonsville, Ellicott City, Towson & surrounding areas.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#how">How It Works</a>
+                <a href="#results">Results</a>
+                <a href="#offer">Get Free Setup</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:hello@synaptixai.com">hello@synaptixai.com</a>
+                <a href="#">Baltimore County, MD</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Synaptix AI. All rights reserved.</span>
+            <span>Built with AI. Powered by results.</span>
+        </div>
     </div>
 </footer>
 
+<script>
+// Nav scroll effect
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20)});
+
+// Fade-up on scroll
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// FAQ toggle
+function toggleFaq(el){const item=el.parentElement;document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});item.classList.toggle('open')}
+
+// Form submission
+document.getElementById('leadForm').addEventListener('submit',async function(e){
+    e.preventDefault();
+    const btn=document.getElementById('f-btn');const msg=document.getElementById('f-msg');
+    btn.textContent='Submitting...';btn.disabled=true;
+    try{
+        const res=await fetch('https://clientpulse-synaptixagent-codes-projects.vercel.app/api/public/intake',{
+            method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({name:document.getElementById('f-name').value,business:document.getElementById('f-biz').value,phone:document.getElementById('f-phone').value,email:document.getElementById('f-email').value,service:'AI Lead Follow-Up Setup'})
+        });
+        if(res.ok){msg.style.display='block';msg.style.background='#dcfce7';msg.style.color='#166534';msg.textContent="You're in! We'll reach out within 24 hours to get you set up.";document.getElementById('leadForm').reset()}
+        else{const d=await res.json();throw new Error(d.error||'Failed')}
+    }catch(err){msg.style.display='block';msg.style.background='#fef2f2';msg.style.color='#991b1b';msg.textContent='Something went wrong. Email us at hello@synaptixai.com'}
+    finally{btn.textContent='Claim Your Free Setup';btn.disabled=false}
+});
+</script>
 </body>
 </html>
