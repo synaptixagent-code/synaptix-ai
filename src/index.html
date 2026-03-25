@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synaptix AI — Stop Losing Leads to Slow Follow-Up</title>
+    <meta name="description" content="AI-powered lead follow-up for home service businesses in Baltimore County. Respond to every lead in under 2 minutes — automatically.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',system-ui,sans-serif;color:#1a1a2e;line-height:1.6;background:#fff}
+        .container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+        /* Nav */
+        nav{padding:16px 0;border-bottom:1px solid #f0f0f5;position:sticky;top:0;background:rgba(255,255,255,.97);z-index:100;backdrop-filter:blur(10px)}
+        .nav-inner{display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.3rem;font-weight:800;color:#1a1a2e}
+        .logo span{color:#2563eb}
+        .nav-cta{background:#2563eb;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s}
+        .nav-cta:hover{background:#1d4ed8;transform:translateY(-1px)}
+
+        /* Hero */
+        .hero{padding:80px 0 60px;text-align:center}
+        .hero-badge{display:inline-block;background:#eff6ff;color:#2563eb;padding:6px 16px;border-radius:20px;font-size:.82rem;font-weight:600;margin-bottom:20px}
+        .hero h1{font-size:3rem;font-weight:800;line-height:1.15;margin-bottom:20px;color:#0f172a}
+        .hero h1 em{font-style:normal;color:#2563eb}
+        .hero p{font-size:1.15rem;color:#64748b;max-width:600px;margin:0 auto 32px}
+        .hero-cta{display:inline-block;background:#2563eb;color:#fff;padding:14px 36px;border-radius:10px;text-decoration:none;font-weight:700;font-size:1.05rem;transition:all .2s;box-shadow:0 4px 14px rgba(37,99,235,.3)}
+        .hero-cta:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.4)}
+        .hero-sub{margin-top:14px;font-size:.85rem;color:#94a3b8}
+
+        /* Stats bar */
+        .stats{display:flex;justify-content:center;gap:48px;padding:40px 0;border-top:1px solid #f0f0f5;border-bottom:1px solid #f0f0f5;margin:0 0 60px}
+        .stat{text-align:center}
+        .stat-num{font-size:2rem;font-weight:800;color:#2563eb}
+        .stat-label{font-size:.85rem;color:#64748b;margin-top:4px}
+
+        /* Problem section */
+        .problem{padding:60px 0;background:#f8fafc;border-radius:20px;margin-bottom:60px}
+        .problem-inner{text-align:center;max-width:700px;margin:0 auto}
+        .section-label{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:#2563eb;font-weight:700;margin-bottom:12px}
+        .problem h2{font-size:2rem;font-weight:800;margin-bottom:16px}
+        .problem p{color:#64748b;font-size:1.05rem;margin-bottom:24px}
+        .problem-list{text-align:left;max-width:500px;margin:0 auto}
+        .problem-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e2e8f0}
+        .problem-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+        .problem-text{font-size:.95rem}
+        .problem-text strong{color:#0f172a}
+
+        /* How it works */
+        .how{padding:60px 0}
+        .how h2{text-align:center;font-size:2rem;font-weight:800;margin-bottom:48px}
+        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+        .step{text-align:center;padding:32px 24px;border-radius:16px;border:1px solid #f0f0f5;transition:all .2s}
+        .step:hover{border-color:#2563eb;box-shadow:0 4px 20px rgba(37,99,235,.08)}
+        .step-num{width:44px;height:44px;background:#eff6ff;color:#2563eb;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 16px}
+        .step h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+        .step p{font-size:.9rem;color:#64748b}
+
+        /* Results */
+        .results{padding:60px 0;background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:20px;color:#fff;margin-bottom:60px}
+        .results h2{text-align:center;font-size:2rem;font-weight:800;margin-bottom:12px}
+        .results>p{text-align:center;color:#94a3b8;margin-bottom:40px;font-size:1rem}
+        .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:0 40px}
+        .result-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 24px;text-align:center}
+        .result-num{font-size:2.2rem;font-weight:800;color:#60a5fa;margin-bottom:4px}
+        .result-text{font-size:.88rem;color:#94a3b8}
+
+        /* Offer */
+        .offer{padding:60px 0;text-align:center}
+        .offer h2{font-size:2rem;font-weight:800;margin-bottom:12px}
+        .offer>p{color:#64748b;margin-bottom:32px;font-size:1.05rem}
+        .offer-card{max-width:500px;margin:0 auto;background:#f8fafc;border:2px solid #2563eb;border-radius:20px;padding:40px 32px;text-align:left}
+        .offer-title{font-size:1.3rem;font-weight:800;color:#2563eb;margin-bottom:16px}
+        .offer-list{list-style:none;margin-bottom:24px}
+        .offer-list li{padding:8px 0;font-size:.95rem;display:flex;gap:10px;align-items:flex-start}
+        .offer-list li::before{content:">";color:#2563eb;font-weight:700;flex-shrink:0}
+        .offer-price{font-size:.95rem;color:#64748b;margin-bottom:24px;padding:16px;background:#fff;border-radius:10px;border:1px solid #e2e8f0}
+        .offer-price strong{color:#0f172a;font-size:1.1rem}
+        .offer-cta{display:block;background:#2563eb;color:#fff;padding:16px;border-radius:10px;text-decoration:none;font-weight:700;font-size:1.05rem;text-align:center;transition:all .2s}
+        .offer-cta:hover{background:#1d4ed8;transform:translateY(-2px)}
+
+        /* FAQ */
+        .faq{padding:60px 0}
+        .faq h2{text-align:center;font-size:2rem;font-weight:800;margin-bottom:36px}
+        .faq-item{max-width:650px;margin:0 auto;border-bottom:1px solid #f0f0f5;padding:20px 0}
+        .faq-q{font-weight:700;font-size:1rem;margin-bottom:8px;cursor:pointer}
+        .faq-a{font-size:.92rem;color:#64748b}
+
+        /* Footer */
+        footer{padding:40px 0;border-top:1px solid #f0f0f5;text-align:center;color:#94a3b8;font-size:.85rem}
+        footer a{color:#2563eb;text-decoration:none}
+
+        /* CTA form */
+        .cta-form{display:flex;gap:10px;max-width:450px;margin:0 auto}
+        .cta-input{flex:1;padding:14px 18px;border:2px solid #e2e8f0;border-radius:10px;font-size:.95rem;outline:none;font-family:inherit}
+        .cta-input:focus{border-color:#2563eb}
+        .cta-submit{background:#2563eb;color:#fff;padding:14px 28px;border:none;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;transition:all .2s}
+        .cta-submit:hover{background:#1d4ed8}
+
+        @media(max-width:768px){
+            .hero h1{font-size:2rem}
+            .stats{flex-direction:column;gap:20px}
+            .steps{grid-template-columns:1fr}
+            .result-grid{grid-template-columns:1fr;padding:0 20px}
+            .cta-form{flex-direction:column}
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <div class="logo"><span>Synaptix</span> AI</div>
+        <a href="#offer" class="nav-cta">Get Free Setup</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">Serving Home Service Businesses in Baltimore County</div>
+        <h1>Stop losing jobs to <em>slow follow-up</em></h1>
+        <p>Your leads contact 3 other companies while you're on a job. Synaptix AI responds for you in under 2 minutes — automatically. Never miss another customer.</p>
+        <a href="#offer" class="hero-cta">Get Your Free Setup</a>
+        <div class="hero-sub">Free setup for the first 3 businesses. No contracts.</div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="stats">
+        <div class="stat"><div class="stat-num">78%</div><div class="stat-label">of customers choose whoever responds first</div></div>
+        <div class="stat"><div class="stat-num">47 hrs</div><div class="stat-label">average response time for service businesses</div></div>
+        <div class="stat"><div class="stat-num">100x</div><div class="stat-label">more likely to close if you respond in 5 min</div></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="problem">
+        <div class="problem-inner">
+            <div class="section-label">The Problem</div>
+            <h2>You're great at your trade. Following up? Not so much.</h2>
+            <p>You're on a roof, under a sink, or in the crawlspace. Meanwhile, leads are hitting your website and hearing... nothing.</p>
+            <div class="problem-list">
+                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>Missed web forms</strong> — Someone fills out your contact form at 2pm. You see it at 9pm. They already hired someone else.</div></div>
+                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>Missed calls</strong> — You can't answer the phone while you're on a job. The voicemail sits there for hours.</div></div>
+                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>No follow-up system</strong> — You mean to call them back, but by the time you do, they've moved on.</div></div>
+                <div class="problem-item"><span class="problem-icon">X</span><div class="problem-text"><strong>Wasted ad spend</strong> — You're paying for Google/Facebook ads that generate leads you never close.</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="how">
+    <div class="container">
+        <div class="section-label" style="text-align:center">How It Works</div>
+        <h2>Set it up once. Catch every lead forever.</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>We connect to your leads</h3>
+                <p>Website forms, Google Ads, Facebook — wherever your leads come from, we plug in. Takes 15 minutes.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>AI responds instantly</h3>
+                <p>Within 2 minutes, your lead gets a personalized response. Professional, friendly, on-brand. 24/7.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Follow-ups on autopilot</h3>
+                <p>If they don't reply, the system follows up 3 more times over 7 days. You only talk to people who are ready to book.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="results">
+        <div class="section-label" style="text-align:center;color:#60a5fa">Results</div>
+        <h2>What happens when you respond first</h2>
+        <p>Average results from businesses using AI-powered follow-up</p>
+        <div class="result-grid">
+            <div class="result-card">
+                <div class="result-num">3-5x</div>
+                <div class="result-text">More leads converted to booked jobs</div>
+            </div>
+            <div class="result-card">
+                <div class="result-num">&lt; 2 min</div>
+                <div class="result-text">Average response time (down from 47 hours)</div>
+            </div>
+            <div class="result-card">
+                <div class="result-num">$2K-8K</div>
+                <div class="result-text">Additional monthly revenue from saved leads</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="offer" id="offer">
+    <div class="container">
+        <div class="section-label">Limited Offer</div>
+        <h2>Free pilot program — 3 spots left</h2>
+        <p>We're looking for 3 home service businesses in Baltimore County to pilot our system. Zero risk.</p>
+        <div class="offer-card">
+            <div class="offer-title">What you get:</div>
+            <ul class="offer-list">
+                <li>Full setup of your AI follow-up system (normally $500)</li>
+                <li>Custom response templates written for your business</li>
+                <li>Connected to your website, Google, and Facebook leads</li>
+                <li>Automatic follow-up sequences (3 touchpoints over 7 days)</li>
+                <li>Dashboard to see every lead and response in real time</li>
+                <li>First month completely free</li>
+            </ul>
+            <div class="offer-price">
+                Setup: <strong>$0</strong> (normally $500)<br>
+                Month 1: <strong>$0</strong><br>
+                After trial: <strong>$250/month</strong> — cancel anytime
+            </div>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:flex;flex-direction:column;gap:10px">
+                <input type="text" name="name" placeholder="Your name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <input type="text" name="business" placeholder="Business name" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <input type="tel" name="phone" placeholder="Phone number" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <input type="email" name="email" placeholder="Email address" required style="padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none">
+                <button type="submit" class="offer-cta">Claim Your Free Setup</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="faq">
+    <div class="container">
+        <h2>Questions</h2>
+        <div class="faq-item">
+            <div class="faq-q">How long does setup take?</div>
+            <div class="faq-a">About 15 minutes. We handle everything — you just give us access to your lead sources and we do the rest.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Will it sound like a robot?</div>
+            <div class="faq-a">No. We write custom responses that match your business tone. Your customers will think it's you or your office manager responding.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What if I want to stop?</div>
+            <div class="faq-a">Cancel anytime. No contracts, no cancellation fees. The pilot month is completely free — if you don't see value, just walk away.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Do I need to be tech-savvy?</div>
+            <div class="faq-a">Not at all. We set everything up for you. You'll get a simple dashboard to see your leads, but you don't have to touch it if you don't want to.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What types of businesses do you work with?</div>
+            <div class="faq-a">HVAC, plumbing, electrical, roofing, landscaping, painting, remodeling, pest control — any home service business that gets inbound leads.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How is this different from a CRM?</div>
+            <div class="faq-a">CRMs require you to log in and manually manage everything. Our system works without you lifting a finger. It responds, follows up, and only alerts you when someone is ready to book.</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="logo" style="margin-bottom:12px"><span>Synaptix</span> AI</div>
+        <p>AI-Powered Lead Follow-Up for Home Service Businesses</p>
+        <p style="margin-top:8px">Serving Baltimore County, Catonsville, Ellicott City, Towson & surrounding areas</p>
+        <p style="margin-top:16px">&copy; 2026 Synaptix AI. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
